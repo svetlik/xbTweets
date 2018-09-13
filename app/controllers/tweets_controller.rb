@@ -9,8 +9,12 @@ class TweetsController < ApplicationController
       config.access_token_secret = "TvZic1K4KeTnYIABAXN7YKNQWypajl3KhIoS4S6Dushtu"
     end
 
-    @tweets_xbav = client.user_timeline('xbav_ag', count: 20)
-    @tweets_github = client.user_timeline('github', count: 20)
-    @tweets_vuejs = client.user_timeline('vuejs', count: 20)
+    tweets_xbav = client.user_timeline('xbav_ag', count: 20)
+    tweets_github = client.user_timeline('github', count: 20)
+    tweets_vuejs = client.user_timeline('vuejs', count: 20)
+
+    @xbav_messages = tweets_xbav.map {|tweet| tweet.full_text}
+    @github_messages = tweets_github.map {|tweet| tweet.full_text}
+    @vuejs_messages = tweets_vuejs.map {|tweet| tweet.full_text}
   end
 end
