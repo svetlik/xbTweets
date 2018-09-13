@@ -3,10 +3,10 @@ require 'twitter'
 class TweetsController < ApplicationController
   def index
     client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = "kxTYZydGQqeTrwHACIyh3EBUY"
-      config.consumer_secret     = "j5SovH5VuaQ8kjjbX0KEgp3LQJ2oHgpJQmeQd6HxtgKTB4lEpV"
-      config.access_token        = "390236231-wGxbj8OWhxwTbgiQPp9RzqJNbQKvL9rlcJvKnNyz"
-      config.access_token_secret = "TvZic1K4KeTnYIABAXN7YKNQWypajl3KhIoS4S6Dushtu"
+      config.consumer_key        = ENV['CONSUMER_KEY']
+      config.consumer_secret     = ENV['CONSUMER_SECRET']
+      config.access_token        = ENV['ACCESS_TOKEN']
+      config.access_token_secret = ENV['ACCESS_TOKEN_SECRET']
     end
 
     tweets_xbav = client.user_timeline('xbav_ag', count: 20)

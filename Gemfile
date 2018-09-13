@@ -16,6 +16,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'twitter'
 gem 'webpacker'
 gem 'foreman'
+gem 'dotenv-rails', '~> 2.2.1', groups: [:development, :test]
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
