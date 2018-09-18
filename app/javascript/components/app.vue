@@ -1,6 +1,4 @@
-
 <template>
-
   <div id="app">
     <h1 class="title">xbTweets</h1>
 
@@ -40,95 +38,84 @@
 </template>
 
 <script>
-export default {
-  props: ["tweetsXbav","tweetsGithub","tweetsVuejs"],
-  data: function () {
-    return {
+  export default {
+    props: ["tweetsXbav","tweetsGithub","tweetsVuejs"],
+    data: function () {
+      return {
+      }
     }
   }
-}
 </script>
 
 <style scoped>
-#app {
-  color: #123D64;
-  background-color: #ecf5fe;
-  margin: 20px;
-}
 
-.title {
-  margin: 0;
-  padding-top: 30px;
-  text-align: center;
-}
+  #app {
+    color: #123D64;
+    background-color: #ecf5fe;
+    margin: 20px;
+  }
 
-input[type=text] {
-  width: 200px;
-  box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: white;
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  padding: 12px 20px 12px 20px;
-  transition: width 0.4s ease-in-out;
-}
+  input[type=text] {
+    width: 200px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 20px;
+    transition: width 0.4s ease-in-out;
+  }
 
-input[type=text]:focus {
-  width: 50%;
-}
+  input[type=text]:focus { width: 50%; }
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  h3 { text-align: center; }
 
-}
+  p {
+    padding: 0 10px;
+    margin: 5px;
+    border: solid #30B0E9 2px;
+    border-radius: 10px;
+  }
 
-h3 {
-  text-align: center;
-}
+  li {
+    padding: 10px;
+    border: solid white 2px;
+  }
 
-p {
-  padding: 0 10px;
-  margin: 5px;
-  border: solid #30B0E9 2px;
-  border-radius: 10px;
-}
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
 
-li {
-  padding: 10px;
-  border: solid white 2px;
-}
+  .title {
+    margin: 0;
+    padding-top: 30px;
+    text-align: center;
+  }
 
-.tweet-column {
-  display: flex;
-  flex-direction: column;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 30%;
-}
+  .tweet-column {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 30%;
+  }
 
+  .mobile { width: 100%; }
 
-.mobile { width: 100%; }
+  .tablet { width: 60%; }
 
-.tablet { width: 60%; }
+  .laptop { width: 40%; }
 
-.laptop { width: 40%; }
+  .desktop { width: 30%; }
 
-.desktop { width: 30%; }
-
-
-
-ul {
-  list-style: none;
-}
-
-.light-blue {
-  color: #30B0E9;
-}
+  .light-blue {
+    color: #30B0E9;
+  }
 
 </style>
