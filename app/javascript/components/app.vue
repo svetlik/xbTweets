@@ -4,6 +4,7 @@
     <h1 class="title">xbTweets</h1>
 
     <div class="container">
+      <h2>current: {{$mq}}</h2>
       <h2>20 tweets per column</h2>
     </div>
 
@@ -12,7 +13,7 @@
     </div>
 
     <div class="container">
-      <div id="xbav-tweets" class="tweet-column">
+      <div id="xbav-tweets" class="tweet-column" :class="$mq">
         <h3>@xbav_ag</h3>
 
         <p v-bind:key="tweet" v-for="tweet in tweetsXbav">
@@ -21,14 +22,14 @@
 
       </div>
 
-      <div id="github-tweets" class="tweet-column">
+      <div id="github-tweets" class="tweet-column" :class="$mq">
         <h3>@github</h3>
         <p v-bind:key="tweet" v-for="tweet in tweetsGithub">
           {{ tweet }}
         </p>
       </div>
 
-      <div id="github-tweets" class="tweet-column">
+      <div id="github-tweets" class="tweet-column" :class="$mq">
         <h3>@vuejs</h3>
         <p v-bind:key="tweet" v-for="tweet in tweetsVuejs">
           {{ tweet }}
@@ -109,14 +110,18 @@ li {
   margin-left: 10px;
   margin-right: 10px;
   width: 30%;
-
 }
 
-@media only screen and (max-width: 768px) {
-    .tweet-column {
-        width: 100%;
-    }
-}
+
+.mobile { width: 100%; }
+
+.tablet { width: 60%; }
+
+.laptop { width: 40%; }
+
+.desktop { width: 30%; }
+
+
 
 ul {
   list-style: none;
