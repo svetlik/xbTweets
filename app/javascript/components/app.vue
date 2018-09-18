@@ -1,3 +1,4 @@
+
 <template>
 
   <div id="app">
@@ -15,24 +16,23 @@
     <div class="container">
       <div id="xbav-tweets" class="tweet-column" :class="$mq">
         <h3>@xbav_ag</h3>
-
-        <p v-bind:key="tweet" v-for="tweet in tweetsXbav">
-          {{ tweet }}
+        <p v-bind:key="tweet.id" v-for="tweet in tweetsXbav">
+          {{ tweet.text }}
         </p>
 
       </div>
 
       <div id="github-tweets" class="tweet-column" :class="$mq">
         <h3>@github</h3>
-        <p v-bind:key="tweet" v-for="tweet in tweetsGithub">
-          {{ tweet }}
+        <p v-bind:key="tweet.id" v-for="tweet in tweetsGithub">
+          {{ tweet.text }}
         </p>
       </div>
 
       <div id="github-tweets" class="tweet-column" :class="$mq">
         <h3>@vuejs</h3>
-        <p v-bind:key="tweet" v-for="tweet in tweetsVuejs">
-          {{ tweet }}
+        <p v-bind:key="tweet.id" v-for="tweet in tweetsVuejs">
+          {{ tweet.text }}
         </p>
       </div>
     </div>

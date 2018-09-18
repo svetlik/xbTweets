@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const element = document.getElementById("hello-vue")
   const props = JSON.parse(element.getAttribute('data'))
   const app = new Vue({
+    components: {
+    },
     el,
     render: h => h(App, { props })
   }).$mount('#hello-vue');
