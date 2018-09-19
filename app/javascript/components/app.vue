@@ -3,8 +3,13 @@
     <h1 class="title">xbTweets</h1>
 
     <div class="container">
-      <h2>current: {{$mq}}</h2>
-      <h2>20 tweets per column</h2>
+      <h2>Tweets per column:</h2>
+      <h2>50</h2>
+      <h2>20</h2>
+      <h2>10</h2>
+      <h2>5</h2>
+      <button @click="increment"></button>
+      {{TweetStore.count}}
     </div>
 
     <div class="container">
@@ -12,38 +17,56 @@
     </div>
 
     <div class="container">
-      <div id="xbav-tweets" class="tweet-column" :class="$mq">
-        <h3>@xbav_ag</h3>
-        <p v-bind:key="tweet.id" v-for="tweet in tweetsXbav">
-          {{ tweet.text }}
-        </p>
+        <div id="xbav-tweets" class="tweet-column" :class="$mq">
+          <h3>@xbav_ag</h3>
+          <draggable v-model="tweetsXbav" @start="drag=true" @end="drag=false">
+            <p v-bind:key="tweet.id" v-for="tweet in tweetsXbav">
+              {{ tweet.text }}
+            </p>
+          </draggable>
 
-      </div>
+        </div>
 
       <div id="github-tweets" class="tweet-column" :class="$mq">
         <h3>@github</h3>
-        <p v-bind:key="tweet.id" v-for="tweet in tweetsGithub">
-          {{ tweet.text }}
-        </p>
+        <draggable v-model="tweetsGithub" @start="drag=true" @end="drag=false">
+          <p v-bind:key="tweet.id" v-for="tweet in tweetsGithub">
+            {{ tweet.text }}
+          </p>
+        </draggable>
       </div>
 
       <div id="github-tweets" class="tweet-column" :class="$mq">
         <h3>@vuejs</h3>
-        <p v-bind:key="tweet.id" v-for="tweet in tweetsVuejs">
-          {{ tweet.text }}
-        </p>
+        <draggable v-model="tweetsVuejs" @start="drag=true" @end="drag=false">
+          <p v-bind:key="tweet.id" v-for="tweet in tweetsVuejs">
+            {{ tweet.text }}
+          </p>
+        </draggable>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import draggable from 'vuedraggable'
+  import TweetStore from '../store/TweetStore'
+
   export default {
-    props: ["tweetsXbav","tweetsGithub","tweetsVuejs"],
+    components: {
+      draggable,
+    },
+    props: ["tweetsXbav","tweetsGithub","tweetsVuejs","showLess"],
     data: function () {
       return {
+        TweetStore: TweetStore.data
       }
-    }
+    },
+    methods: {
+      increment () {
+        TweetStore.methods.increment()
+      }
+    },
   }
 </script>
 

@@ -9,8 +9,8 @@ class TweetsController < ApplicationController
       config.access_token_secret = ENV['ACCESS_TOKEN_SECRET']
     end
 
-    @tweets_xbav = client.user_timeline('xbav_ag', count: 20)
-    @tweets_github = client.user_timeline('github', count: 20)
-    @tweets_vuejs = client.user_timeline('vuejs', count: 20)
+    @tweets_xbav = client.user_timeline('xbav_ag', count: 50)
+    @tweets_github = client.user_timeline('github', count: 50)
+    @tweets_vuejs = client.user_timeline('vuejs', count: 50)
   end
 end
