@@ -34,7 +34,7 @@
       draggable,
       TweetColumn
     },
-    props: ["tweetsXbav","tweetsGithub","tweetsVuejs","showLess"],
+    props: ["tweetsXbav","tweetsGithub","tweetsVuejs"],
     data: function () {
       return {
         TweetStore: TweetStore.data
@@ -87,5 +87,6 @@
     padding-top: 30px;
     text-align: center;
   }
+
 
 </style>

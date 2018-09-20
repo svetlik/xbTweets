@@ -23,6 +23,21 @@ export default {
     return {
     }
   },
+  mounted() {
+    console.log('App mounted!');
+    console.log(localStorage)
+    if (localStorage.getItem('tweets')) this.tweets = JSON.parse(localStorage.getItem('tweets'));
+  },
+  watch: {
+    tweets: {
+      handler() {
+        console.log('Tweets changed!');
+        localStorage.setItem('tweets', JSON.stringify(this.tweets));
+      },
+
+      deep: true,
+    },
+  },
 }
 </script>
 
