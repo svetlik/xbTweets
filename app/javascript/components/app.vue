@@ -137,7 +137,7 @@
 
 <style scoped>
 
-  body {
+  #app {
     color: #123D64;
     background-color: #ecf5fe;
   }
