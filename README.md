@@ -1,24 +1,30 @@
-# README
+# xbTweets
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A simple Rails + VueJS project, that displays tweets from three accounts, and supports rearrangement of the tweets, searching, limiting number of displayed tweets, as well as keeping the rearranged tweets after page refresh.
 
-Things you may want to cover:
+## How to run the project
 
-* Ruby version
+0. Clone the project from this repository: run `git clone git@github.com:svetlik/xbTweets.git`
 
-* System dependencies
+1. Execute `bundle && yarn` to download all packages.
 
-* Configuration
+2. Create a `.env` file in the project root directory and add values for CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET. Example:
+```
+CONSUMER_KEY="tralala"
+CONSUMER_SECRET="hogehoge"
+ACCESS_TOKEN="piyopiyo"
+ACCESS_TOKEN_SECRET="fugafuga"
+```
 
-* Database creation
+3. Start the project using `foreman start -f Procfile.dev`
 
-* Database initialization
+## Functionality
 
-* How to run the test suite
+- __Display only the last 5, 10, 20, or 50 tweets__ by clicking on one of the four buttons
+- __Filter tweets__ by writing some text in the Search bar
+- __Rearrange the tweets__ by draggin and dropping them within their column
+- __The rearrangement of tweets will be saved__ when you refresh the page.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Demo
 
-* Deployment instructions
-
-* ...
+A live demo of the project is available on [Heroku](https://fast-inlet-68255.herokuapp.com)
