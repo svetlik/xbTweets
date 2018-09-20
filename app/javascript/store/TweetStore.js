@@ -1,10 +1,10 @@
 const TweetStore = {
   data: {
-    count: 2,
+    count: 50,
   },
   methods: {
-    increment() {
-      TweetStore.data.count++
+    setCount(newCount) {
+      TweetStore.data.count = newCount
     }
   }
 };

@@ -2,14 +2,11 @@
   <div id="app">
     <h1 class="title">xbTweets</h1>
 
-    <div class="container">
-      <h2>Tweets per column:</h2>
-      <h2>50</h2>
-      <h2>20</h2>
-      <h2>10</h2>
-      <h2>5</h2>
-      <button @click="increment"></button>
-      {{TweetStore.count}}
+    <div class="buttons">
+      <button @click="setCount(50)">50</button>
+      <button @click="setCount(20)">20</button>
+      <button @click="setCount(10)">10</button>
+      <button @click="setCount(5)">5</button>
     </div>
 
     <div class="container">
@@ -23,7 +20,7 @@
       <div class="tweet-column" :class="$mq">
         <h3>@xbav_ag</h3>
         <draggable v-model=tweetsXbav @start="drag=true" @end="drag=false">
-          <p v-bind:key="tweet.id" v-for="tweet in tweetsXbav">
+          <p v-bind:key="tweet.id" v-for="tweet in tweetsXbav.slice(0, TweetStore.count)">
             {{ tweet.text }}
           </p>
         </draggable>
@@ -33,7 +30,7 @@
       <div class="tweet-column" :class="$mq">
         <h3>@github</h3>
         <draggable v-model=tweetsGithub @start="drag=true" @end="drag=false">
-          <p v-bind:key="tweet.id" v-for="tweet in tweetsGithub">
+          <p v-bind:key="tweet.id" v-for="tweet in tweetsGithub.slice(0, TweetStore.count)">
             {{ tweet.text }}
           </p>
         </draggable>
@@ -43,7 +40,7 @@
       <div class="tweet-column" :class="$mq">
         <h3>@vuejs</h3>
         <draggable v-model=tweetsVuejs @start="drag=true" @end="drag=false">
-          <p v-bind:key="tweet.id" v-for="tweet in tweetsVuejs">
+          <p v-bind:key="tweet.id" v-for="tweet in tweetsVuejs.slice(0, TweetStore.count)">
             {{ tweet.text }}
           </p>
         </draggable>
@@ -70,8 +67,8 @@
       }
     },
     methods: {
-      increment () {
-        TweetStore.methods.increment()
+      setCount(newCount) {
+        TweetStore.methods.setCount(newCount)
       }
     },
     mounted() {
@@ -115,7 +112,6 @@
   #app {
     color: #123D64;
     background-color: #ecf5fe;
-    margin: 20px;
   }
 
   input[type=text] {
@@ -156,7 +152,7 @@
     padding: 0 10px;
     margin: 5px;
     border: solid #30B0E9 2px;
-    border-radius: 10px;
+    border-radius: 4px;
   }
 
   .tweet-column {
@@ -176,5 +172,22 @@
 
   .desktop { width: 30%; }
 
+  button {
+    margin-top: 20px;
+    border: none;
+    background-color: #30B0E9;
+    color: white;
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 4px;
+  }
+
+  button:hover{background-color: #123D64;}
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0 30px 0;
+  }
 
 </style>
