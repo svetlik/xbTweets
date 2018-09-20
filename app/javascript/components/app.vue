@@ -10,7 +10,7 @@
     </div>
 
     <div class="container">
-      <input type="text" placeholder="Search in tweets...">
+      <input type="text" v-model="search" placeholder="Search in tweets..."/>
     </div>
 
     <div class="container">
@@ -19,8 +19,9 @@
       <!-- <TweetColumn :tweets=tweetsVuejs title="@vuejs"></TweetColumn> -->
       <div class="tweet-column" :class="$mq">
         <h3>@xbav_ag</h3>
+
         <draggable v-model=tweetsXbav @start="drag=true" @end="drag=false">
-          <p v-bind:key="tweet.id" v-for="tweet in tweetsXbav.slice(0, TweetStore.count)">
+          <p v-bind:key="tweet.id" v-for="tweet in filtered_tweetsXbav.slice(0, TweetStore.count)">
             {{ tweet.text }}
           </p>
         </draggable>
@@ -30,7 +31,7 @@
       <div class="tweet-column" :class="$mq">
         <h3>@github</h3>
         <draggable v-model=tweetsGithub @start="drag=true" @end="drag=false">
-          <p v-bind:key="tweet.id" v-for="tweet in tweetsGithub.slice(0, TweetStore.count)">
+          <p v-bind:key="tweet.id" v-for="tweet in filtered_tweetsGithub.slice(0, TweetStore.count)">
             {{ tweet.text }}
           </p>
         </draggable>
@@ -40,7 +41,7 @@
       <div class="tweet-column" :class="$mq">
         <h3>@vuejs</h3>
         <draggable v-model=tweetsVuejs @start="drag=true" @end="drag=false">
-          <p v-bind:key="tweet.id" v-for="tweet in tweetsVuejs.slice(0, TweetStore.count)">
+          <p v-bind:key="tweet.id" v-for="tweet in filtered_tweetsVuejs.slice(0, TweetStore.count)">
             {{ tweet.text }}
           </p>
         </draggable>
@@ -63,12 +64,39 @@
     props: ["tweetsXbav","tweetsGithub","tweetsVuejs"],
     data: function () {
       return {
+        search: '',
         TweetStore: TweetStore.data
       }
     },
     methods: {
       setCount(newCount) {
         TweetStore.methods.setCount(newCount)
+      }
+    },
+    computed: {
+      filtered_tweetsXbav:function() {
+        var self=this;
+
+        return this.tweetsXbav.filter(function(tweet) {
+          console.log(tweet.text);
+          return tweet.text.toLowerCase().indexOf(self.search.toLowerCase())>=0;
+        });
+      },
+      filtered_tweetsGithub:function() {
+        var self=this;
+
+        return this.tweetsGithub.filter(function(tweet) {
+          console.log(tweet.text);
+          return tweet.text.toLowerCase().indexOf(self.search.toLowerCase())>=0;
+        });
+      },
+      filtered_tweetsVuejs:function() {
+        var self=this;
+
+        return this.tweetsVuejs.filter(function(tweet) {
+          console.log(tweet.text);
+          return tweet.text.toLowerCase().indexOf(self.search.toLowerCase())>=0;
+        });
       }
     },
     mounted() {
@@ -109,7 +137,7 @@
 
 <style scoped>
 
-  #app {
+  body {
     color: #123D64;
     background-color: #ecf5fe;
   }
