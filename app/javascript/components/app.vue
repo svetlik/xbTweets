@@ -13,10 +13,7 @@
       <input type="text" v-model="search" placeholder="Search in tweets..."/>
     </div>
 
-    <div class="container">
-      <!-- <TweetColumn :tweets=tweetsXbav title="@xbav_ag"></TweetColumn> -->
-      <!-- <TweetColumn :tweets=tweetsGithub title="@github"></TweetColumn> -->
-      <!-- <TweetColumn :tweets=tweetsVuejs title="@vuejs"></TweetColumn> -->
+    <draggable v-model=tweets @start="drag=true" @end="drag=false" class="container">
       <div class="tweet-column" :class="$mq">
         <h3>@xbav_ag</h3>
 
@@ -47,7 +44,7 @@
         </draggable>
 
       </div>
-    </div>
+    </draggable>
   </div>
 </template>
 
@@ -78,7 +75,6 @@
         var self=this;
 
         return this.tweetsXbav.filter(function(tweet) {
-          console.log(tweet.text);
           return tweet.text.toLowerCase().indexOf(self.search.toLowerCase())>=0;
         });
       },
@@ -86,7 +82,6 @@
         var self=this;
 
         return this.tweetsGithub.filter(function(tweet) {
-          console.log(tweet.text);
           return tweet.text.toLowerCase().indexOf(self.search.toLowerCase())>=0;
         });
       },
@@ -94,14 +89,11 @@
         var self=this;
 
         return this.tweetsVuejs.filter(function(tweet) {
-          console.log(tweet.text);
           return tweet.text.toLowerCase().indexOf(self.search.toLowerCase())>=0;
         });
       }
     },
     mounted() {
-      console.log('App mounted!');
-      console.log(localStorage)
       if (localStorage.getItem('tweetsXbav')) this.tweetsXbav = JSON.parse(localStorage.getItem('tweetsXbav'));
       if (localStorage.getItem('tweetsGithub')) this.tweetsGithub = JSON.parse(localStorage.getItem('tweetsGithub'));
       if (localStorage.getItem('tweetsVuejs')) this.tweetsVuejs = JSON.parse(localStorage.getItem('tweetsVuejs'));
@@ -109,7 +101,6 @@
     watch: {
       tweetsXbav: {
         handler() {
-          console.log('TweetsXbav changed!');
           localStorage.setItem('tweetsXbav', JSON.stringify(this.tweetsXbav));
         },
 
@@ -117,7 +108,6 @@
       },
       tweetsGithub: {
         handler() {
-          console.log('TweetsGithub changed!');
           localStorage.setItem('tweetsGithub', JSON.stringify(this.tweetsGithub));
         },
 
@@ -125,7 +115,6 @@
       },
       tweetsVuejs: {
         handler() {
-          console.log('TweetsVuejs changed!');
           localStorage.setItem('tweetsVuejs', JSON.stringify(this.tweetsVuejs));
         },
 
